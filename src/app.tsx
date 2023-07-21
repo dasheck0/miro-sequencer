@@ -2,6 +2,7 @@ import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Footer } from './components/Footer';
 import { SequencerTab } from './components/SequencerTab';
+import { SplitTab } from './components/SplitTab';
 import { Tabs } from './components/Tabs';
 
 const App: React.FC = () => {
@@ -12,7 +13,7 @@ const App: React.FC = () => {
     },
     {
       title: 'Split',
-      content: <div>Tab 2 content</div>,
+      content: <SplitTab />,
     },
   ];
 

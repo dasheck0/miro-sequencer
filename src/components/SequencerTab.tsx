@@ -1,22 +1,7 @@
 import React from 'react';
+import { reformatItems, selectItems } from '../utils/handleItems.utils';
+import { supportedElements } from '../utils/supportedItems.utils';
 import { Info } from './Info';
-
-interface Element {
-  id: string;
-  width: number;
-  x: number;
-  y: number;
-  height: number;
-  sync: () => Promise<void>;
-}
-
-type ElementType = 'StickyNode' | 'Text' | 'Shape' | 'Frame' | 'Card';
-
-interface SupportedElement {
-  type: ElementType;
-  factoryMethod: (props: any | undefined) => Promise<any>;
-  textPropName: string;
-}
 
 export const SequencerTab = () => {
   const [formula, setFormula] = React.useState('$i');
@@ -24,34 +9,6 @@ export const SequencerTab = () => {
   const [increment, setIncrement] = React.useState(1);
   const [count, setCount] = React.useState(5);
   const [currentElementTypeIndex, setCurrentElementTypeIndex] = React.useState(0);
-
-  const supportedElements: SupportedElement[] = [
-    {
-      type: 'StickyNode',
-      factoryMethod: miro.board.createStickyNote,
-      textPropName: 'content',
-    },
-    {
-      type: 'Text',
-      factoryMethod: miro.board.createText,
-      textPropName: 'content',
-    },
-    {
-      type: 'Shape',
-      factoryMethod: miro.board.createShape,
-      textPropName: 'content',
-    },
-    {
-      type: 'Frame',
-      factoryMethod: miro.board.createFrame,
-      textPropName: 'title',
-    },
-    {
-      type: 'Card',
-      factoryMethod: miro.board.createCard,
-      textPropName: 'title',
-    },
-  ];
 
   const generate = async () => {
     const texts = Array.from({ length: count }, (_, index) => {
@@ -64,34 +21,13 @@ export const SequencerTab = () => {
 
     const elements = await Promise.all(texts.map(text => factory({ [textPropName]: text })));
 
-    await reformatElements(elements);
-    await selectElements(elements);
+    await reformatItems(elements);    
+    await selectItems(elements);
 
     await miro.board.viewport.zoomTo(elements[0]);
     await miro.board.viewport.setZoom(1);
 
     await miro.board.notifications.showInfo(`Created ${elements.length} ${supportedElements[currentElementTypeIndex].type}s`);
-  };
-
-  const reformatElements = async (elements: Element[]) => {
-    if (elements.length > 0) {
-      const margin = elements[0].width * 0.1;
-      elements.forEach(async (element, index) => {
-        if (index === 0) {
-          return;
-        }
-
-        const previousElement = elements[index - 1];
-        element.x = previousElement.x + previousElement.width + margin;
-        element.y = previousElement.y;
-
-        await element.sync();
-      });
-    }
-  };
-
-  const selectElements = async (elements: Element[]) => {
-    await miro.board.select({ id: elements.map(element => element.id) });
   };
 
   return (
