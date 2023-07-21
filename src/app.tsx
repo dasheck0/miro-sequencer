@@ -1,45 +1,36 @@
 import * as React from 'react';
-import {createRoot} from 'react-dom/client';
-
-async function addSticky() {
-  const stickyNote = await miro.board.createStickyNote({
-    content: 'Hello, World!',
-  });
-
-  await miro.board.viewport.zoomTo(stickyNote);
-}
+import { createRoot } from 'react-dom/client';
+import { Footer } from './components/Footer';
+import { SequencerTab } from './components/SequencerTab';
+import { Tabs } from './components/Tabs';
 
 const App: React.FC = () => {
-  React.useEffect(() => {
-    addSticky();
-  }, []);
+  const tabs = [
+    {
+      title: 'Sequencer',
+      content: <SequencerTab />,
+    },
+    {
+      title: 'Split',
+      content: <div>Tab 2 content</div>,
+    },
+  ];
 
   return (
-    <div className="grid wrapper">
-      <div className="cs1 ce12">
-        <img src="/src/assets/congratulations.png" alt="" />
-      </div>
-      <div className="cs1 ce12">
-        <h1>Congratulations!</h1>
-        <p>You've just created your first Miro app!</p>
-        <p>
-          To explore more and build your own app, see the Miro Developer
-          Platform documentation.
-        </p>
-      </div>
-      <div className="cs1 ce12">
-        <a
-          className="button button-primary"
-          target="_blank"
-          href="https://developers.miro.com"
-        >
-          Read the documentation
-        </a>
-      </div>
+    <div
+      className='grid h100'
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+      }}>
+      <Tabs tabs={tabs} />
+      <Footer />
     </div>
   );
 };
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+const root = createRoot(document.getElementById('root')!!);
 root.render(<App />);
