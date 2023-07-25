@@ -102,8 +102,8 @@ export const SequencerTab = () => {
           </div>
         </div>
       </div>
-      <div className='cs1 ce12 mt-medium' style={{ alignSelf: 'flex-end' }}>
-        <button className='button button-primary button-small' onClick={generate}>
+      <div className='cs1 ce12 w100 mt-medium'>
+        <button className='button button-primary button-small' onClick={generate} style={{ justifyContent: 'center' }}>
           Generate
         </button>
       </div>

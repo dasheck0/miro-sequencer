@@ -81,8 +81,12 @@ export const SplitTab: FC = () => {
           </select>
         </div>
       </div>
-      <div className='cs1 ce12 mt-medium' style={{ alignSelf: 'flex-end' }}>
-        <button className='button button-primary button-small' disabled={buttonDisabled || !delimiter} onClick={split}>
+      <div className='cs1 ce12 w100 mt-medium'>
+        <button
+          className='button button-primary button-small'
+          disabled={buttonDisabled || !delimiter}
+          onClick={split}
+          style={{ justifyContent: 'center' }}>
           Split
         </button>
       </div>
