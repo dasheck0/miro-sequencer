@@ -21,7 +21,7 @@ export const SequencerTab = () => {
 
     const elements = await Promise.all(texts.map(text => factory({ [textPropName]: text })));
 
-    await reformatItems(elements);    
+    await reformatItems(elements);
     await selectItems(elements);
 
     await miro.board.viewport.zoomTo(elements[0]);
@@ -102,7 +102,7 @@ export const SequencerTab = () => {
           </div>
         </div>
       </div>
-      <div className='cs1 ce12 w100 mt-medium'>
+      <div className='cs1 ce12 mt-medium' style={{ alignSelf: 'flex-end' }}>
         <button className='button button-primary button-small' onClick={generate}>
           Generate
         </button>
