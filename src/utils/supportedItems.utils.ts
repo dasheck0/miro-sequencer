@@ -1,6 +1,6 @@
 import { Item } from '@mirohq/websdk-types';
 
-export type SupportedItemType = 'StickyNode' | 'Text' | 'Shape' | 'Frame' | 'Card';
+export type SupportedItemType = 'Sticky Note' | 'Text' | 'Shape' | 'Frame' | 'Card';
 
 export interface SupportedItem {
   type: SupportedItemType;
@@ -11,7 +11,7 @@ export interface SupportedItem {
 
 export const supportedElements: SupportedItem[] = [
   {
-    type: 'StickyNode',
+    type: 'Sticky Note',
     factoryMethod: miro.board.createStickyNote,
     textPropName: 'content',
     miroType: 'sticky_note',
