@@ -9,9 +9,18 @@ interface ItemPartial {
 
 export const reformatItems = async (items: ItemPartial[]) => {
   if (items.length > 0) {
+    const viewport = await miro.board.viewport.get();
+
+    const startX = viewport.x + viewport.width / 2 - items[0].width / 2;
+    const startY = viewport.y + viewport.height / 2 - items[0].height / 2;
+
     const margin = items[0].width * 0.1;
     items.forEach(async (element, index) => {
       if (index === 0) {
+        element.x = startX + margin;
+        element.y = startY + margin;
+        await element.sync();
+
         return;
       }
 

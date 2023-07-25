@@ -36,8 +36,8 @@ export const SplitTab: FC = () => {
       await miro.board.deselect({ id: selectedElement[0].id });
       await selectItems(elements);
 
-      await miro.board.viewport.zoomTo(elements[0]);
-      await miro.board.viewport.setZoom(1);
+      // await miro.board.viewport.zoomTo(elements[0]);
+      // await miro.board.viewport.setZoom(1);
 
       await miro.board.notifications.showInfo(`Created ${elements.length} ${supportedElements[currentElementTypeIndex].type}s`);
     }
