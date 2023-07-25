@@ -24,8 +24,8 @@ export const SequencerTab = () => {
     await reformatItems(elements);
     await selectItems(elements);
 
-    await miro.board.viewport.zoomTo(elements[0]);
-    await miro.board.viewport.setZoom(1);
+    // await miro.board.viewport.zoomTo(elements[0]);
+    // await miro.board.viewport.setZoom(1);
 
     await miro.board.notifications.showInfo(`Created ${elements.length} ${supportedElements[currentElementTypeIndex].type}s`);
   };
