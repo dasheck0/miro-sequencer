@@ -44,11 +44,9 @@ export const OnboardingModal = () => {
         </div>
       </div>
 
-      <div className='cs1 ce12'>
-        <button className='button button-primary' onClick={closeModal}>
-          Got it
-        </button>
-      </div>
+      <button className='cs1 ce12 button button-primary' onClick={closeModal} style={{ justifyContent: 'center' }}>
+        Got it
+      </button>
     </div>
   );
 };
