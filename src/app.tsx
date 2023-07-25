@@ -4,6 +4,7 @@ import { Footer } from './components/Footer';
 import { SequencerTab } from './components/SequencerTab';
 import { SplitTab } from './components/SplitTab';
 import { Tabs } from './components/Tabs';
+import { LocalStorateStore } from './store';
 
 const App: React.FC = () => {
   const tabs = [
@@ -16,6 +17,14 @@ const App: React.FC = () => {
       content: <SplitTab />,
     },
   ];
+
+  React.useEffect(() => {
+    const hasSeenIntro = LocalStorateStore.getInstance().get('hasSeenOnboarding');
+    
+    if (!hasSeenIntro) {
+      miro.board.ui.openModal({ url: `${import.meta.env.VITE_BASE_URL}/onboarding.html`, width: 600, height: 600 });
+    }
+  }, []);
 
   return (
     <div
