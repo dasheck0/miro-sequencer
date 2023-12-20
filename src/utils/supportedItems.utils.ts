@@ -12,31 +12,31 @@ export interface SupportedItem {
 export const supportedElements: SupportedItem[] = [
   {
     type: 'Sticky Note',
-    factoryMethod: miro.board.createStickyNote,
+    factoryMethod: props => miro.board.createStickyNote(props),
     textPropName: 'content',
     miroType: 'sticky_note',
   },
   {
     type: 'Text',
-    factoryMethod: miro.board.createText,
+    factoryMethod: props => miro.board.createText(props),
     textPropName: 'content',
     miroType: 'text',
   },
   {
     type: 'Shape',
-    factoryMethod: miro.board.createShape,
+    factoryMethod: props => miro.board.createShape(props),
     textPropName: 'content',
     miroType: 'shape',
   },
   {
     type: 'Frame',
-    factoryMethod: miro.board.createFrame,
+    factoryMethod: props => miro.board.createFrame(props),
     textPropName: 'title',
     miroType: 'frame',
   },
   {
     type: 'Card',
-    factoryMethod: miro.board.createCard,
+    factoryMethod: props => miro.board.createCard(props),
     textPropName: 'title',
     miroType: 'card',
   },
