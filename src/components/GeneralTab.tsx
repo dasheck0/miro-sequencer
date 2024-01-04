@@ -27,7 +27,7 @@ export const GeneralTab = () => {
       <div className='grid'>
         <div className='cs1 ce4'>Clear text</div>
         <div className='cs9 ce12'>
-          <button className='button' onClick={clearText}>
+          <button className='button button-primary button-small' onClick={clearText}>
             Clear all text
           </button>
         </div>
