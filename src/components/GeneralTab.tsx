@@ -27,7 +27,7 @@ export const GeneralTab = () => {
       <div className='grid'>
         <div className='cs1 ce7'>Clear selected Stickies</div>
         <div className='cs9 ce12'>
-          <button className='button button-primary button-small' onClick={clearText}>
+          <button className='button button-primary button-small' onClick={clearText} style={{ justifyContent: 'center' }}>
             Clear
           </button>
         </div>
