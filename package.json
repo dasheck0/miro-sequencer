@@ -1,7 +1,7 @@
 {
   "name": "sequencer",
   "description": "This is a miro plugin that helps creating content based on rules, such as sequences",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "scripts": {
     "start": "vite",
